@@ -1,16 +1,22 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const NAV_LINKS = [
-  { href: "#about", label: "Story" },
-  { href: "#services", label: "Services" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#testimonials", label: "Love Notes" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
+  { href: "/press", label: "Press" },
+  { href: "/journal", label: "Journal" },
+  { href: "/inquire", label: "Contact" },
 ];
 
-export default function Navbar() {
+type NavbarProps = {
+  /** When true, the nav rests on top of dark imagery and starts in inverted (light) colors. */
+  overImage?: boolean;
+};
+
+export default function Navbar({ overImage = false }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -21,87 +27,114 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  // When sitting over a dark hero image and not scrolled, render text white.
+  const inverted = overImage && !scrolled && !open;
+
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/60 shadow-[0_4px_24px_-12px_rgba(155,123,91,0.18)]"
+      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-500 ${
+        scrolled || open
+          ? "bg-background/92 backdrop-blur-xl border-b border-border"
           : "bg-transparent"
       }`}
     >
-      <nav className="container-px max-w-7xl mx-auto flex items-center justify-between h-20">
-        <a href="#top" className="flex flex-col leading-none">
-          <span className="display-script text-3xl text-accent">Jaleco</span>
-          <span className="text-[0.6rem] uppercase tracking-widest2 text-muted-foreground -mt-1">
-            Weddings &amp; Events
-          </span>
-        </a>
+      <nav className="container-px container-max flex items-center justify-between h-20">
+        <Link
+          href="/"
+          aria-label="Jaleco — Weddings & Events"
+          className={`font-display text-2xl transition-colors duration-500 ${
+            inverted ? "text-background" : "text-foreground"
+          }`}
+          style={{ letterSpacing: "-0.02em", lineHeight: 1.1 }}
+        >
+          Jaleco
+        </Link>
 
-        <ul className="hidden md:flex items-center gap-9">
+        <ul className="hidden lg:flex items-center gap-10">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
-                className="text-xs uppercase tracking-widest2 text-foreground/80 hover:text-accent transition-colors"
+                className={`text-[12px] uppercase tracking-label py-3 transition-colors duration-300 ${
+                  inverted
+                    ? "text-background/85 hover:text-background"
+                    : "text-foreground/85 hover:text-accent"
+                }`}
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
-        <a href="#contact" className="hidden md:inline-flex btn-primary !py-2.5 !px-6">
-          Enquire
-        </a>
+        <Link
+          href="/inquire"
+          className={`hidden lg:inline-block text-[12px] uppercase tracking-label link-underline py-3 transition-colors duration-500 ${
+            inverted ? "text-background" : "text-foreground"
+          }`}
+        >
+          Inquire
+        </Link>
 
         <button
-          aria-label="Toggle menu"
+          aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="md:hidden flex flex-col gap-1.5 p-2"
+          className="lg:hidden flex flex-col gap-1.5 p-2 -mr-2"
           onClick={() => setOpen((v) => !v)}
         >
           <span
-            className={`block h-px w-6 bg-foreground transition-transform ${
-              open ? "translate-y-[7px] rotate-45" : ""
-            }`}
+            className={`block h-px w-6 transition-all duration-300 ${
+              inverted ? "bg-background" : "bg-foreground"
+            } ${open ? "translate-y-[7px] rotate-45" : ""}`}
           />
           <span
-            className={`block h-px w-6 bg-foreground transition-opacity ${
-              open ? "opacity-0" : ""
-            }`}
+            className={`block h-px w-6 transition-all duration-300 ${
+              inverted ? "bg-background" : "bg-foreground"
+            } ${open ? "opacity-0" : ""}`}
           />
           <span
-            className={`block h-px w-6 bg-foreground transition-transform ${
-              open ? "-translate-y-[7px] -rotate-45" : ""
-            }`}
+            className={`block h-px w-6 transition-all duration-300 ${
+              inverted ? "bg-background" : "bg-foreground"
+            } ${open ? "-translate-y-[7px] -rotate-45" : ""}`}
           />
         </button>
       </nav>
 
       <div
-        className={`md:hidden overflow-hidden bg-background/95 backdrop-blur-xl transition-[max-height] duration-500 ${
-          open ? "max-h-[400px] border-t border-border" : "max-h-0"
+        className={`lg:hidden overflow-hidden bg-background/98 backdrop-blur-xl transition-[max-height] duration-500 ${
+          open ? "max-h-[480px] border-t border-border" : "max-h-0"
         }`}
       >
-        <ul className="container-px max-w-7xl mx-auto py-6 flex flex-col gap-5">
+        <ul className="container-px container-max py-8 flex flex-col gap-1">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-sm uppercase tracking-widest2 text-foreground/80"
+                className="block py-3 font-display text-2xl text-foreground"
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
-          <li>
+          <li className="mt-4 pt-4 border-t border-border">
             <a
-              href="#contact"
+              href="mailto:hello@eventbyjaleco.com"
               onClick={() => setOpen(false)}
-              className="btn-primary w-full !py-3"
+              className="block py-2 text-[12px] uppercase tracking-label text-muted-foreground"
             >
-              Enquire
+              hello@eventbyjaleco.com
             </a>
           </li>
         </ul>

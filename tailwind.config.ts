@@ -19,38 +19,42 @@ const config: Config = {
         destructive: color("destructive"),
       },
       fontFamily: {
-        serif: ["var(--font-serif)", "serif"],
-        script: ["var(--font-script)", "cursive"],
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
+        sans: ["var(--font-body)", "system-ui", "sans-serif"],
+        serif: ["var(--font-display)", "Georgia", "serif"],
       },
-      boxShadow: {
-        soft: "8px 8px 20px #e8ddd1, -8px -8px 20px #ffffff",
-        "soft-sm": "4px 4px 10px #e8ddd1, -4px -4px 10px #ffffff",
-        "soft-inset":
-          "inset 4px 4px 8px #e8ddd1, inset -4px -4px 8px #ffffff",
-        glow: "0 12px 40px -8px rgba(196, 168, 130, 0.35)",
+      fontSize: {
+        "fluid-xs": "var(--text-xs)",
+        "fluid-sm": "var(--text-sm)",
+        "fluid-base": "var(--text-base)",
+        "fluid-lg": "var(--text-lg)",
+        "fluid-xl": "var(--text-xl)",
+        "fluid-2xl": "var(--text-2xl)",
+        "fluid-3xl": "var(--text-3xl)",
+        "fluid-display": "var(--text-display)",
       },
       letterSpacing: {
-        widest2: "0.32em",
+        "tightest-x": "-0.03em",
+        "eyebrow": "0.2em",
+        "label": "0.18em",
       },
-      animation: {
-        "fade-up": "fadeUp 0.8s ease-out both",
-        "fade-in": "fadeIn 1s ease-out both",
-        float: "float 6s ease-in-out infinite",
+      borderRadius: {
+        none: "0",
+        sm: "2px",
+        DEFAULT: "4px",
+        md: "4px",
+        lg: "8px",
+        full: "9999px",
       },
-      keyframes: {
-        fadeUp: {
-          "0%": { opacity: "0", transform: "translateY(24px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-        float: {
-          "0%,100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
+      boxShadow: {
+        none: "none",
+        hairline: "0 0 0 1px rgb(0 0 0 / 0.06)",
+      },
+      maxWidth: {
+        prose: "52ch",
+        quote: "40ch",
+        sub: "46ch",
       },
     },
   },

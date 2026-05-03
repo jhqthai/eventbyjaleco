@@ -1,36 +1,34 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Great_Vibes, Raleway } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 
-const serif = Cormorant_Garamond({
+const display = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
-  variable: "--font-serif",
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
   display: "swap",
 });
 
-const script = Great_Vibes({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-script",
-  display: "swap",
-});
-
-const sans = Raleway({
+const body = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
-  variable: "--font-sans",
-  display: "swap",
+  variable: "--font-inter",
+  display: "optional",
 });
 
 export const metadata: Metadata = {
-  title: "Event by Jaleco — Boutique Wedding Planning",
+  metadataBase: new URL("https://eventbyjaleco.com"),
+  title: {
+    default: "Event by Jaleco — Boutique Wedding Planning",
+    template: "%s — Event by Jaleco",
+  },
   description:
-    "Bespoke wedding design and full-service planning for couples who love the details. Intimate ceremonies, full planning, and destination weddings.",
+    "A boutique studio for couples who care about the difference candlelight makes. Considered design and full-service planning for weddings around the world.",
   openGraph: {
     title: "Event by Jaleco — Boutique Wedding Planning",
     description:
-      "Bespoke wedding design and full-service planning for couples who love the details.",
+      "A boutique studio for couples who care about the difference candlelight makes.",
     type: "website",
   },
 };
@@ -41,11 +39,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${serif.variable} ${script.variable} ${sans.variable}`}
-    >
-      <body>{children}</body>
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
+      <body>
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
+        {children}
+      </body>
     </html>
   );
 }
