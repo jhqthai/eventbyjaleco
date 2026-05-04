@@ -16,7 +16,7 @@ export default function InquirePage() {
       <Navbar />
       <main id="main" className="pt-32 lg:pt-40 pb-[var(--space-section)]">
         <div className="container-px container-max">
-          <div className="grid gap-16 lg:gap-24 lg:grid-cols-12">
+          <div className="grid gap-16 lg:gap-y-24 lg:gap-x-[var(--col-gutter)] lg:grid-cols-12">
             <div className="lg:col-span-5">
               <Reveal>
                 <p className="eyebrow mb-6">Begin</p>

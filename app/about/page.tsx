@@ -69,7 +69,7 @@ export default function AboutPage() {
       <Navbar />
       <main id="main">
         <section className="pt-32 lg:pt-40 pb-[var(--space-section)]">
-          <div className="container-px container-max grid gap-16 lg:gap-24 lg:grid-cols-12 items-end">
+          <div className="container-px container-max grid gap-16 lg:gap-y-24 lg:gap-x-[var(--col-gutter)] lg:grid-cols-12 items-end">
             <div className="lg:col-span-6 order-2 lg:order-1">
               <Reveal as="figure" className="m-0">
                 <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">

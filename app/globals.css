@@ -30,6 +30,7 @@
   --space-section-sm: clamp(64px, 8vw, 120px);
   --container-max: 1280px;
   --container-gutter: clamp(20px, 4.5vw, 64px);
+  --col-gutter: clamp(2rem, 5vw, 6rem);
 }
 
 @layer base {
