@@ -33,7 +33,8 @@ export const FEATURES: Feature[] = [
   },
   {
     publication: "Town & Country",
-    headline: "How Jaleco Plans the Most Considered Celebrations of the Year",
+    headline:
+      "How Event by Jaleco Plans the Most Considered Celebrations of the Year",
     date: "May 2025",
     url: "#",
   },

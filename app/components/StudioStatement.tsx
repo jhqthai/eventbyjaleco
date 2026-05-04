@@ -16,19 +16,19 @@ export default function StudioStatement() {
                 letterSpacing: "-0.01em",
               }}
             >
-              Jaleco is a small studio for couples who care about the difference
-              a folded napkin, a hand-written menu, or the way candlelight
-              catches a glass can make. We design with restraint, and a deep
-              respect for the people the day belongs to. From a private estate
-              elopement to a multi-day celebration on the coast, every wedding
-              is a one-of-one — never a template, never a trend. Just your
-              story, told beautifully.
+              Event by Jaleco is a small studio for couples who care about the
+              difference a folded napkin, a hand-written menu, or the way
+              candlelight catches a glass can make. We design with restraint,
+              and a deep respect for the people the day belongs to. From a
+              private estate elopement to a multi-day celebration on the coast,
+              every wedding is a one-of-one — never a template, never a trend.
+              Just your story, told beautifully.
             </p>
 
             <div className="mt-12 flex flex-col items-center gap-3">
               <span aria-hidden className="block w-12 h-px bg-border" />
               <p className="display-italic text-muted-foreground text-fluid-base">
-                Jaleco, founder &amp; creative director
+                Muelvi Jaleco, founder &amp; creative director
               </p>
             </div>
           </div>

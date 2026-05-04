@@ -7,7 +7,7 @@ import Reveal from "../components/Reveal";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Jaleco is a boutique studio designing quietly luxurious weddings for couples who care about the difference candlelight makes.",
+    "Event by Jaleco is a boutique studio designing quietly luxurious weddings for couples who care about the difference candlelight makes.",
 };
 
 const PILLARS = [
@@ -27,11 +27,11 @@ const PILLARS = [
 
 const TEAM = [
   {
-    name: "Jaleco",
+    name: "Muelvi Jaleco",
     role: "Founder & Creative Director",
     photo:
       "https://images.unsplash.com/photo-1525258946800-98cfd641d0de?auto=format&fit=crop&w=800&q=85",
-    alt: "Jaleco arranging florals in studio.",
+    alt: "Muelvi Jaleco arranging florals in studio.",
   },
   {
     name: "Mira",
@@ -75,7 +75,7 @@ export default function AboutPage() {
                 <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
                   <Image
                     src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de?auto=format&fit=crop&w=1600&q=85"
-                    alt="Jaleco arranging garden roses in the studio."
+                    alt="Muelvi Jaleco arranging garden roses in the studio."
                     fill
                     priority
                     sizes="(min-width: 1024px) 50vw, 100vw"
@@ -106,11 +106,11 @@ export default function AboutPage() {
               <Reveal delay={120}>
                 <div className="mt-10 space-y-6 text-pretty max-w-prose text-foreground/90 leading-relaxed">
                   <p>
-                    Jaleco is a small studio for couples who care about the
-                    difference a folded napkin, a hand-written menu, or the
-                    way candlelight catches a glass can make. We design with
-                    restraint, and a deep respect for the people the day
-                    belongs to.
+                    Event by Jaleco is a small studio for couples who care
+                    about the difference a folded napkin, a hand-written
+                    menu, or the way candlelight catches a glass can make.
+                    We design with restraint, and a deep respect for the
+                    people the day belongs to.
                   </p>
                   <p>
                     From a private estate elopement to a multi-day celebration

@@ -35,7 +35,7 @@ export default function Footer() {
                 className="font-display text-3xl text-foreground"
                 style={{ letterSpacing: "-0.02em" }}
               >
-                Jaleco
+                Event by Jaleco
               </span>
               <span className="text-[10px] uppercase tracking-label text-muted-foreground mt-1">
                 Weddings &amp; Events

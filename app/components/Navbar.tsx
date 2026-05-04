@@ -52,13 +52,13 @@ export default function Navbar({ overImage = false }: NavbarProps) {
       <nav className="container-px container-max flex items-center justify-between h-20">
         <Link
           href="/"
-          aria-label="Jaleco — Weddings & Events"
+          aria-label="Event by Jaleco — Weddings & Events"
           className={`font-display text-2xl transition-colors duration-500 ${
             inverted ? "text-background" : "text-foreground"
           }`}
           style={{ letterSpacing: "-0.02em", lineHeight: 1.1 }}
         >
-          Jaleco
+          Event by Jaleco
         </Link>
 
         <ul className="hidden lg:flex items-center gap-10">

@@ -5,7 +5,8 @@ import WorkGrid from "./WorkGrid";
 
 export const metadata: Metadata = {
   title: "Work",
-  description: "A small selection of weddings designed and produced by Jaleco.",
+  description:
+    "A small selection of weddings designed and produced by Event by Jaleco.",
 };
 
 export default function WorkPage() {
