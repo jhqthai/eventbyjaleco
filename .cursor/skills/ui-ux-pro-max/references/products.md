@@ -4,6 +4,9 @@ Format: `No | Product | Primary Style | Secondary Styles | Landing Pattern | Das
 
 Use the number to look up the exact hex palette in `colors.md`.
 
+> **2026 update.** For any product where the brand is **luxury, editorial, premium hospitality, fashion, boutique-events, or wedding-planning**, use the **Editorial / Quiet Luxury** recipe in `references/quiet-luxury-2026.md` — it overrides whatever generic "Liquid Glass + Glassmorphism" or "Soft UI + Aurora" recommendation appears in the rows below. Those legacy recommendations produce 2010s-era results on premium briefs.
+> Affected rows: **#4 E-commerce Luxury**, **#33 Luxury Brand**, **#38 Hotel**, **#39 Wedding/Events** (already updated below).
+
 ## Technology & SaaS
 
 | # | Product | Primary Style | Secondary Styles | Landing Pattern | Dashboard |
@@ -28,7 +31,7 @@ Use the number to look up the exact hex palette in `colors.md`.
 | # | Product | Primary Style | Secondary Styles | Landing Pattern | Dashboard |
 |---|---------|--------------|-----------------|-----------------|-----------|
 | 3 | E-commerce | Vibrant & Block | Aurora UI, Motion | Feature-Rich | Sales Intelligence |
-| 4 | E-commerce Luxury | Liquid Glass + Glassmorphism | 3D, Aurora | Feature-Rich | Sales Intelligence |
+| 4 | E-commerce Luxury | **Editorial / Quiet Luxury + Minimalism** | Full-bleed Photography, Storytelling | Storytelling + Feature-Rich | Sales Intelligence |
 | 26 | Subscription Box | Vibrant & Block + Motion | Claymorphism, Aurora | Feature-Rich | E-commerce Analytics |
 | 47 | Job Board | Flat Design + Minimalism | Vibrant, Accessible | Conversion + Feature-Rich | HR Analytics |
 | 48 | Marketplace (P2P) | Vibrant & Block + Flat | Micro-interactions, Trust | Feature-Rich + Social Proof | E-commerce Analytics |
@@ -103,8 +106,8 @@ Use the number to look up the exact hex palette in `colors.md`.
 |---|---------|--------------|-----------------|-----------------|-----------|
 | 34 | Restaurant/Food | Vibrant & Block + Motion | Claymorphism, Flat | Hero-Centric + Conversion | N/A — Booking |
 | 37 | Travel/Tourism | Aurora + Motion | Vibrant, Glassmorphism | Storytelling + Hero | Booking Analytics |
-| 38 | Hotel | Liquid Glass + Minimalism | Glassmorphism, Soft UI | Hero + Social Proof | Revenue Management |
-| 39 | Wedding/Events | Soft UI + Aurora | Glassmorphism, Motion | Storytelling + Social | N/A — Planning |
+| 38 | Hotel (boutique / luxury) | **Editorial / Quiet Luxury + Minimalism** | Storytelling, Full-bleed Photography | Hero + Social Proof + Press | Revenue Management |
+| 39 | Wedding/Events (luxury / boutique planner) | **Editorial / Quiet Luxury** | Minimalism, Full-bleed Photography | Storytelling + Press Wall + Inquire | N/A — Planning |
 | 63 | Bakery/Cafe | Vibrant + Soft UI | Claymorphism, Motion | Hero + Conversion | N/A — Order |
 | 95 | Food Delivery | Vibrant + Motion | Glassmorphism, Flat | Hero + Feature-Rich | Real-Time + Map |
 | 97 | Recipe/Cooking | Claymorphism + Vibrant | Soft UI, Organic | Hero + Feature-Rich | N/A — Content |
@@ -126,7 +129,7 @@ Use the number to look up the exact hex palette in `colors.md`.
 |---|---------|--------------|-----------------|-----------------|-----------|
 | 23 | Pet Tech | Claymorphism + Vibrant | Micro, Flat | Storytelling | User Behavior |
 | 32 | Beauty/Spa | Soft UI + Neumorphism | Glassmorphism, Minimalism | Hero + Social Proof | User Behavior |
-| 33 | Luxury Brand | Liquid Glass + Glassmorphism | Minimalism, 3D | Storytelling + Feature-Rich | Sales Intelligence |
+| 33 | Luxury Brand | **Editorial / Quiet Luxury + Minimalism** | Full-bleed Photography, Storytelling | Storytelling + Press Wall | Sales Intelligence |
 | 35 | Fitness/Gym | Vibrant & Block + Dark Mode | Motion, Neumorphism | Feature-Rich | User Behavior |
 | 36 | Real Estate | Glassmorphism + Minimalism | Motion, 3D | Hero + Feature-Rich | Sales Intelligence |
 | 50 | Agriculture | Organic Biophilic + Flat | Minimalism, Accessible | Feature-Rich + Trust | IoT Sensor |

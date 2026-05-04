@@ -4,12 +4,26 @@ Format: `No | Product | Primary | On-Primary | Secondary | Accent | Background |
 
 All hex values are WCAG-compliant. "Accent" = CTA / highlight color. Use `--color-destructive: #DC2626` universally unless noted.
 
+> **2026 update — luxury / editorial palettes.** For Wedding/Events, Luxury Brand, E-commerce Luxury, and Boutique Hotel briefs, prefer the **Editorial Cream** recipe over the legacy pink-and-gold or black-and-gold defaults below. The editorial recipe is what current top-tier studios (Yifat Oren, Easton Events, Aman, Kinfolk) actually use:
+>
+> | Token | Hex | Role |
+> |---|---|---|
+> | `--color-background` | `#FAF7F2` | Warm cream — never pure white |
+> | `--color-foreground` | `#1A1814` | Warm ink — never pure black |
+> | `--color-muted` | `#F3EFE8` | Quiet section background |
+> | `--color-muted-foreground` | `#6B6356` | Secondary text (passes AA at 5.7:1) |
+> | `--color-border` | `#E6DED2` | Hairline only |
+> | `--color-secondary` | `#9EA591` | Dusty sage — eyebrow labels |
+> | `--color-accent` | `#7A3C2E` | Warm oxblood — single restrained accent |
+>
+> Alternate single accents (pick one — never combine): oxblood `#5A2A2A`–`#7A3C2E` (couture), sage `#8C9482`–`#9EA591` (calm), caramel `#A07852` (earthy), champagne / brass `#B5946A` (hospitality), dusty blue `#7A8A99` (coastal), terracotta `#B5634A` (Mediterranean). Full guidance in `references/quiet-luxury-2026.md`.
+
 | No | Product Type | Primary | Secondary | Accent | Background | Foreground | Notes |
 |----|-------------|---------|-----------|--------|------------|------------|-------|
 | 1 | SaaS (General) | #2563EB | #3B82F6 | #EA580C | #F8FAFC | #1E293B | Trust blue + orange CTA |
 | 2 | Micro SaaS | #6366F1 | #818CF8 | #059669 | #F5F3FF | #1E1B4B | Indigo + emerald CTA |
 | 3 | E-commerce | #059669 | #10B981 | #EA580C | #ECFDF5 | #064E3B | Success green + urgency orange |
-| 4 | E-commerce Luxury | #1C1917 | #44403C | #A16207 | #FAFAF9 | #0C0A09 | Premium dark + gold accent |
+| 4 | E-commerce Luxury | #1C1917 | #44403C | #A16207 | #FAFAF9 | #0C0A09 | Premium dark + gold (high-fashion houses). For editorial / boutique e-commerce prefer Editorial Cream — see `quiet-luxury-2026.md` |
 | 5 | B2B Service | #0F172A | #334155 | #0369A1 | #F8FAFC | #020617 | Professional navy + blue CTA |
 | 6 | Financial Dashboard | #0F172A | #1E293B | #22C55E | #020617 | #F8FAFC | Dark bg + green indicators |
 | 7 | Analytics Dashboard | #1E40AF | #3B82F6 | #D97706 | #F8FAFC | #1E3A8A | Blue data + amber highlights |
@@ -38,13 +52,14 @@ All hex values are WCAG-compliant. "Accent" = CTA / highlight color. Use `--colo
 | 30 | Knowledge Base | #475569 | #64748B | #2563EB | #F8FAFC | #1E293B | Neutral grey + link blue |
 | 31 | Hyperlocal Services | #059669 | #10B981 | #EA580C | #ECFDF5 | #064E3B | Location green + action orange |
 | 32 | Beauty/Spa/Wellness | #EC4899 | #F9A8D4 | #8B5CF6 | #FDF2F8 | #831843 | Soft pink + lavender luxury |
-| 33 | Luxury/Premium Brand | #1C1917 | #44403C | #A16207 | #FAFAF9 | #0C0A09 | Premium black + gold accent |
+| 33 | Luxury/Premium Brand | #1C1917 | #44403C | #A16207 | #FAFAF9 | #0C0A09 | Premium black + gold (legacy). For 2026 editorial brands prefer warm cream `#FAF7F2` + warm ink `#1A1814` + single accent — see `quiet-luxury-2026.md` |
 | 34 | Restaurant/Food | #DC2626 | #F87171 | #A16207 | #FEF2F2 | #450A0A | Appetizing red + warm gold |
 | 35 | Fitness/Gym App | #F97316 | #FB923C | #22C55E | #1F2937 | #F8FAFC | Energy orange + success green |
 | 36 | Real Estate | #0F766E | #14B8A6 | #0369A1 | #F0FDFA | #134E4A | Trust teal + professional blue |
 | 37 | Travel/Tourism | #0EA5E9 | #38BDF8 | #EA580C | #F0F9FF | #0C4A6E | Sky blue + adventure orange |
-| 38 | Hotel/Hospitality | #1E3A8A | #3B82F6 | #A16207 | #F8FAFC | #1E40AF | Luxury navy + gold service |
-| 39 | Wedding/Events | #DB2777 | #F472B6 | #A16207 | #FDF2F8 | #831843 | Romantic pink + elegant gold |
+| 38 | Hotel/Hospitality | #1E3A8A | #3B82F6 | #A16207 | #F8FAFC | #1E40AF | Navy + gold (mainstream / chain hotels). For boutique / luxury hotels use Editorial Cream — `#FAF7F2` + `#1A1814` + brass accent `#B5946A`. See `quiet-luxury-2026.md` |
+| 39 | Wedding/Events (boutique / luxury — 2026) | #1A1814 | #6B6356 | #7A3C2E | #FAF7F2 | #1A1814 | **Editorial Cream + warm oxblood accent.** Use this for any luxury/boutique wedding planner. See `quiet-luxury-2026.md`. |
+| 39b | Wedding/Events (mass-market, colorful) | #DB2777 | #F472B6 | #A16207 | #FDF2F8 | #831843 | Romantic pink + elegant gold — only for value-tier wedding marketplaces, NOT luxury planners |
 | 40 | Legal Services | #1E3A8A | #1E40AF | #B45309 | #F8FAFC | #0F172A | Authority navy + trust gold |
 | 41 | Insurance | #0369A1 | #0EA5E9 | #16A34A | #F0F9FF | #0C4A6E | Security blue + protected green |
 | 42 | Banking/Finance | #0F172A | #1E3A8A | #A16207 | #F8FAFC | #020617 | Trust navy + premium gold |

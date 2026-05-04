@@ -4,20 +4,27 @@ Format: `No | Name | Category | Heading Font | Body Font | Best For | Google Fon
 
 All fonts available on fonts.google.com. Tailwind config format: `fontFamily: { heading: ['Font Name', 'sans-serif'], body: ['Font Name', 'sans-serif'] }`
 
+> **⚠ Dated for 2026 — do not pair these on luxury, editorial, wedding, or premium hospitality briefs:**
+> - **Script display fonts**: Great Vibes, Allura, Pacifico, Lobster, Sacramento, Dancing Script — they read as 2010s Etsy/wedding-template. Replace with *Cormorant Garamond Italic* or *Editorial New Italic* at the same display size.
+> - **Raleway** as the body sans on premium brands — its 2014 web-default association feels dated. Replace with *Inter*, *Söhne*, or *GT America*.
+> - **Comic-rounded** sans (Quicksand, Comfortaa, Nunito) on anything serious — reserve for kids / education only.
+> - For modern luxury wedding/event sites, the canonical pairing is **Cormorant Garamond (with italic accent) + Inter**. See `references/quiet-luxury-2026.md`.
+
 ## Quick Lookup by Use Case
 
 | Use Case | Heading | Body | Import Shortcut |
 |----------|---------|------|----------------|
-| Elegant/Luxury | Playfair Display | Inter | #1 Classic Elegant |
+| Editorial Luxury / Wedding / Hotel / Fashion (2026) | Cormorant Garamond *(italic accent)* | Inter | #4 Editorial Classic / #50 Luxury Minimalist |
+| Elegant/Luxury (alt) | Playfair Display | Inter | #1 Classic Elegant |
 | Modern SaaS | Poppins | Open Sans | #2 Modern Professional |
 | Tech Startup | Space Grotesk | DM Sans | #3 Tech Startup |
 | Developer | JetBrains Mono | IBM Plex Sans | #9 Developer Mono |
-| Wellness | Lora | Raleway | #8 Wellness Calm |
+| Wellness | Lora | Inter | #8 Wellness Calm |
 | Playful/Kids | Fredoka | Nunito | #6 Playful Creative |
 | Bold/Impact | Bebas Neue | Source Sans 3 | #7 Bold Statement |
 | Finance | IBM Plex Sans | IBM Plex Sans | #31 Financial Trust |
 | Gaming | Russo One | Chakra Petch | #37 Gaming Bold |
-| Wedding | Great Vibes | Cormorant | #46 Wedding/Romance |
+| ~~Wedding (legacy 2010s)~~ → use Editorial Luxury row above | ~~Great Vibes~~ | ~~Cormorant~~ | ~~#46~~ — deprecated |
 | Vietnamese | Be Vietnam Pro | Noto Sans | #21 Vietnamese |
 | Japanese | Noto Serif JP | Noto Sans JP | #22 Japanese |
 | Korean | Noto Sans KR | Noto Sans KR | #23 Korean |
@@ -78,7 +85,8 @@ All fonts available on fonts.google.com. Tailwind config format: `fontFamily: { 
 | 43 | Music/Entertainment | Righteous | Poppins | music, energetic, performance | Music platforms, festivals |
 | 44 | Minimalist Portfolio | Space Grotesk | Archivo | minimal, creative | Design portfolios, minimalist brands |
 | 45 | Kids/Education | Baloo 2 | Comic Neue | kids, fun, learning | Children's apps, educational games |
-| 46 | Wedding/Romance | Great Vibes | Cormorant Infant | romantic, elegant | Wedding sites, invitations |
+| 46 | ~~Wedding/Romance (legacy)~~ | ~~Great Vibes~~ | ~~Cormorant Infant~~ | ⚠ Dated for 2026 — script display fonts on wedding sites read as 2010s template | Use #4 Editorial Classic or #50 Luxury Minimalist instead. See `references/quiet-luxury-2026.md` |
+| 46b | Editorial Wedding (2026 replacement) | Cormorant Garamond *(italic accent)* | Inter | romantic, editorial, quiet luxury | Modern luxury wedding planners, boutique events, atelier studios |
 | 47 | Science/Tech | Exo | Roboto Mono | science, data, precise | Research, tech documentation |
 | 48 | Accessibility First | Atkinson Hyperlegible | Atkinson Hyperlegible | accessible, dyslexia-friendly | WCAG-critical, government, healthcare |
 | 49 | Sports/Fitness | Barlow Condensed | Barlow | athletic, energetic | Sports, gyms, athletic brands |
