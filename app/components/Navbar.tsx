@@ -90,21 +90,25 @@ export default function Navbar({ overImage = false }: NavbarProps) {
         <button
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="lg:hidden flex flex-col gap-1.5 p-2 -mr-2"
+          className={`lg:hidden flex flex-col gap-1.5 p-3 -mr-3 ${
+            inverted
+              ? "[&>span]:drop-shadow-[0_1px_2px_rgba(0,0,0,0.45)]"
+              : ""
+          }`}
           onClick={() => setOpen((v) => !v)}
         >
           <span
-            className={`block h-px w-6 transition-all duration-300 ${
+            className={`block h-0.5 w-6 transition-all duration-300 ${
               inverted ? "bg-background" : "bg-foreground"
             } ${open ? "translate-y-[7px] rotate-45" : ""}`}
           />
           <span
-            className={`block h-px w-6 transition-all duration-300 ${
+            className={`block h-0.5 w-6 transition-all duration-300 ${
               inverted ? "bg-background" : "bg-foreground"
             } ${open ? "opacity-0" : ""}`}
           />
           <span
-            className={`block h-px w-6 transition-all duration-300 ${
+            className={`block h-0.5 w-6 transition-all duration-300 ${
               inverted ? "bg-background" : "bg-foreground"
             } ${open ? "-translate-y-[7px] -rotate-45" : ""}`}
           />

@@ -13,7 +13,7 @@ export default function JournalPage() {
   return (
     <>
       <Navbar />
-      <main id="main" className="min-h-[80svh] flex items-center pt-32 pb-32">
+      <main id="main" className="lg:min-h-[80svh] lg:flex lg:items-center pt-32 pb-32">
         <div className="container-px container-max">
           <Reveal>
             <div className="max-w-prose mx-auto text-center">
