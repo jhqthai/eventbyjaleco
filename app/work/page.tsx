@@ -1,13 +1,44 @@
 import type { Metadata } from "next";
 import Footer from "../components/Footer";
+import JsonLd from "../components/JsonLd";
 import Navbar from "../components/Navbar";
+import { WORKS } from "../lib/works";
+import {
+  breadcrumbLd,
+  buildGraph,
+  collectionPageLd,
+  SITE_URL,
+  workItemListLd,
+} from "../lib/seo";
 import WorkGrid from "./WorkGrid";
 
+const WORK_URL = `${SITE_URL}/work`;
+const WORK_DESCRIPTION =
+  "A selection of weddings designed and produced by Event by Jaleco — destination, intimate, and private estate celebrations across Italy, France, Greece, the United States, Japan, and Australia.";
+
 export const metadata: Metadata = {
-  title: "Work",
-  description:
-    "A small selection of weddings designed and produced by Event by Jaleco.",
+  title: "Work — Selected destination & boutique weddings",
+  description: WORK_DESCRIPTION,
+  alternates: { canonical: "/work" },
+  openGraph: {
+    url: WORK_URL,
+    title: "Work — Selected destination & boutique weddings by Event by Jaleco",
+    description: WORK_DESCRIPTION,
+  },
 };
+
+const workGraph = buildGraph([
+  collectionPageLd({
+    name: "Selected work — Event by Jaleco",
+    description: WORK_DESCRIPTION,
+    url: WORK_URL,
+  }),
+  breadcrumbLd([
+    { name: "Home", url: "/" },
+    { name: "Work", url: "/work" },
+  ]),
+  workItemListLd(WORKS),
+]);
 
 export default function WorkPage() {
   return (
@@ -37,6 +68,7 @@ export default function WorkPage() {
         <WorkGrid />
       </main>
       <Footer />
+      <JsonLd data={workGraph} id="ld-work" />
     </>
   );
 }

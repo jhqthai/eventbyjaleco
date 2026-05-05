@@ -2,7 +2,7 @@ import Image from "next/image";
 import Reveal from "./Reveal";
 
 const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2880&q=85";
+  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2000&q=80";
 
 export default function Hero() {
   return (
@@ -13,7 +13,7 @@ export default function Hero() {
       <div className="absolute inset-0 -z-10">
         <Image
           src={HERO_IMAGE}
-          alt="Candle-lit wedding tablescape with garden roses at dusk."
+          alt="Candle-lit wedding tablescape with garden roses at dusk — boutique wedding design by Event by Jaleco, Sydney."
           fill
           priority
           sizes="100vw"

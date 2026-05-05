@@ -1,14 +1,39 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Footer from "../components/Footer";
+import JsonLd from "../components/JsonLd";
 import Navbar from "../components/Navbar";
 import Reveal from "../components/Reveal";
+import {
+  aboutPageLd,
+  breadcrumbLd,
+  buildGraph,
+  personLd,
+  SITE_URL,
+  TEAM as STUDIO_TEAM,
+} from "../lib/seo";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About — Sydney's quietly luxurious wedding studio",
   description:
-    "Event by Jaleco is a boutique studio designing quietly luxurious weddings for couples who care about the difference candlelight makes.",
+    "Meet Event by Jaleco — a Sydney boutique studio led by Muelvi Jaleco, designing quietly luxurious weddings worldwide since 2014. Our team, approach, and craft.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    url: `${SITE_URL}/about`,
+    title: "About — Sydney's quietly luxurious wedding studio",
+    description:
+      "A Sydney boutique studio designing quietly luxurious weddings worldwide. Meet the team and approach behind Event by Jaleco.",
+  },
 };
+
+const aboutGraph = buildGraph([
+  aboutPageLd(),
+  breadcrumbLd([
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about" },
+  ]),
+  ...STUDIO_TEAM.slice(1).map((m) => personLd(m.name, m.jobTitle)),
+]);
 
 const PILLARS = [
   {
@@ -75,7 +100,7 @@ export default function AboutPage() {
                 <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
                   <Image
                     src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de?auto=format&fit=crop&w=1600&q=85"
-                    alt="Muelvi Jaleco arranging garden roses in the studio."
+                    alt="Muelvi Jaleco, founder and creative director of Event by Jaleco, arranging garden roses in the Sydney boutique wedding studio."
                     fill
                     priority
                     sizes="(min-width: 1024px) 50vw, 100vw"
@@ -217,6 +242,7 @@ export default function AboutPage() {
         </section>
       </main>
       <Footer />
+      <JsonLd data={aboutGraph} id="ld-about" />
     </>
   );
 }

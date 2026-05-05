@@ -1,14 +1,40 @@
 import type { Metadata } from "next";
 import Footer from "../components/Footer";
+import JsonLd from "../components/JsonLd";
 import Navbar from "../components/Navbar";
 import Reveal from "../components/Reveal";
+import {
+  breadcrumbLd,
+  buildGraph,
+  contactPageLd,
+  localBusinessLd,
+  SITE_URL,
+} from "../lib/seo";
 import InquireForm from "./InquireForm";
 
+const INQUIRE_URL = `${SITE_URL}/inquire`;
+const INQUIRE_DESCRIPTION =
+  "Begin a conversation with Event by Jaleco. Share a few details about your wedding and our Sydney studio will be in touch within two business days.";
+
 export const metadata: Metadata = {
-  title: "Inquire",
-  description:
-    "Begin a conversation. Share a few details about your wedding and we will be in touch within two business days.",
+  title: "Inquire — Begin a conversation",
+  description: INQUIRE_DESCRIPTION,
+  alternates: { canonical: "/inquire" },
+  openGraph: {
+    url: INQUIRE_URL,
+    title: "Inquire — Event by Jaleco",
+    description: INQUIRE_DESCRIPTION,
+  },
 };
+
+const inquireGraph = buildGraph([
+  contactPageLd(),
+  breadcrumbLd([
+    { name: "Home", url: "/" },
+    { name: "Inquire", url: "/inquire" },
+  ]),
+  localBusinessLd(),
+]);
 
 export default function InquirePage() {
   return (
@@ -82,6 +108,7 @@ export default function InquirePage() {
         </div>
       </main>
       <Footer />
+      <JsonLd data={inquireGraph} id="ld-inquire" />
     </>
   );
 }

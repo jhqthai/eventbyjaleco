@@ -1,13 +1,44 @@
 import type { Metadata } from "next";
 import Footer from "../components/Footer";
+import JsonLd from "../components/JsonLd";
 import Navbar from "../components/Navbar";
 import Reveal from "../components/Reveal";
 import { FEATURES, PUBLICATIONS } from "../lib/press";
+import {
+  breadcrumbLd,
+  buildGraph,
+  collectionPageLd,
+  pressItemListLd,
+  SITE_URL,
+} from "../lib/seo";
+
+const PRESS_URL = `${SITE_URL}/press`;
+const PRESS_DESCRIPTION =
+  "Event by Jaleco in the press — selected features in Vogue, Harper's Bazaar, Town & Country, Brides, Martha Stewart, and Kinfolk on our boutique and destination weddings.";
 
 export const metadata: Metadata = {
-  title: "Press",
-  description: "Selected press features and publications.",
+  title: "Press — featured in Vogue, Harper's Bazaar, Town & Country",
+  description: PRESS_DESCRIPTION,
+  alternates: { canonical: "/press" },
+  openGraph: {
+    url: PRESS_URL,
+    title: "Press — Event by Jaleco in Vogue, Harper's Bazaar, Town & Country",
+    description: PRESS_DESCRIPTION,
+  },
 };
+
+const pressGraph = buildGraph([
+  collectionPageLd({
+    name: "Press — Event by Jaleco",
+    description: PRESS_DESCRIPTION,
+    url: PRESS_URL,
+  }),
+  breadcrumbLd([
+    { name: "Home", url: "/" },
+    { name: "Press", url: "/press" },
+  ]),
+  pressItemListLd(FEATURES),
+]);
 
 export default function PressPage() {
   return (
@@ -84,6 +115,7 @@ export default function PressPage() {
         </section>
       </main>
       <Footer />
+      <JsonLd data={pressGraph} id="ld-press" />
     </>
   );
 }

@@ -3,8 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "../../components/Footer";
+import JsonLd from "../../components/JsonLd";
 import Navbar from "../../components/Navbar";
 import Reveal from "../../components/Reveal";
+import {
+  breadcrumbLd,
+  buildGraph,
+  SITE_URL,
+  workArticleLd,
+} from "../../lib/seo";
 import { WORKS, adjacentWorks, workBySlug } from "../../lib/works";
 
 export function generateStaticParams() {
@@ -18,9 +25,39 @@ export function generateMetadata({
 }): Metadata {
   const work = workBySlug(params.slug);
   if (!work) return { title: "Work" };
+  const title = `${work.place} Wedding Planning — ${work.region}, ${work.year}`;
+  const url = `${SITE_URL}/work/${work.slug}`;
   return {
-    title: `${work.place}, ${work.year}`,
+    title,
     description: work.narrative,
+    alternates: { canonical: `/work/${work.slug}` },
+    keywords: [
+      `${work.place} wedding planner`,
+      `${work.region} wedding planner`,
+      `${work.category.toLowerCase()} wedding`,
+      "destination wedding",
+      "luxury wedding designer",
+    ],
+    openGraph: {
+      type: "article",
+      url,
+      title,
+      description: work.narrative,
+      images: [
+        {
+          url: work.hero,
+          width: 2400,
+          height: 1600,
+          alt: work.thumbAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: work.narrative,
+      images: [work.hero],
+    },
   };
 }
 
@@ -33,6 +70,15 @@ export default function WorkDetailPage({
   if (!work) notFound();
 
   const { prev, next } = adjacentWorks(work.slug);
+
+  const workGraph = buildGraph([
+    breadcrumbLd([
+      { name: "Home", url: "/" },
+      { name: "Work", url: "/work" },
+      { name: `${work.place}, ${work.year}`, url: `/work/${work.slug}` },
+    ]),
+    workArticleLd(work),
+  ]);
 
   return (
     <>
@@ -204,6 +250,7 @@ export default function WorkDetailPage({
         )}
       </main>
       <Footer />
+      <JsonLd data={workGraph} id={`ld-work-${work.slug}`} />
     </>
   );
 }

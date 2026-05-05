@@ -7,6 +7,12 @@ import Reveal from "../components/Reveal";
 export const metadata: Metadata = {
   title: "Journal",
   description: "Notes from the studio. Coming soon.",
+  alternates: { canonical: "/journal" },
+  robots: {
+    index: false,
+    follow: true,
+    googleBot: { index: false, follow: true },
+  },
 };
 
 export default function JournalPage() {
