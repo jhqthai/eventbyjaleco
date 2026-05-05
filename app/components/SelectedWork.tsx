@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import MediaImage from "./MediaImage";
 import Reveal from "./Reveal";
 import { WORKS } from "../lib/works";
 
@@ -60,16 +60,16 @@ export default function SelectedWork() {
               >
                 <Link href={`/work/${work.slug}`} className="block group">
                   <div className={`relative ${layout.aspect} overflow-hidden bg-muted`}>
-                    <Image
+                    <MediaImage
                       src={work.thumb}
                       alt={work.thumbAlt}
                       fill
                       sizes={layout.sizes}
-                      className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.02]"
+                      className="object-cover transform-gpu transition-[opacity,transform] duration-[600ms] ease-out group-hover:scale-[1.04]"
                     />
                   </div>
                   <figcaption className="mt-5 flex items-baseline justify-between gap-4">
-                    <span className="display-italic text-foreground text-fluid-lg">
+                    <span className="display-italic text-foreground text-fluid-lg transition-colors duration-500 group-hover:text-accent">
                       {work.place}
                     </span>
                     <span className="text-[11px] uppercase tracking-label text-muted-foreground">

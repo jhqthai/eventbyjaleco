@@ -44,7 +44,7 @@ export default function WorkPage() {
   return (
     <>
       <Navbar />
-      <main id="main" className="pt-32 lg:pt-40 pb-[var(--space-section)]">
+      <main id="main" className="page-fade-in pt-32 lg:pt-40 pb-[var(--space-section)]">
         <header className="container-px container-max">
           <p className="eyebrow mb-6">Selected work</p>
           <h1

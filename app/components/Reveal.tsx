@@ -43,6 +43,26 @@ export default function Reveal({
     setVisible(true);
   }, [threshold]);
 
+  // Clear `will-change` once the reveal transition finishes so we don't
+  // keep compositor layers around for every revealed element on the page.
+  useEffect(() => {
+    if (!visible) return;
+    const node = ref.current;
+    if (!node) return;
+
+    const handleEnd = (event: TransitionEvent) => {
+      if (event.target !== node) return;
+      if (event.propertyName !== "opacity" && event.propertyName !== "transform") {
+        return;
+      }
+      node.style.willChange = "auto";
+      node.removeEventListener("transitionend", handleEnd);
+    };
+
+    node.addEventListener("transitionend", handleEnd);
+    return () => node.removeEventListener("transitionend", handleEnd);
+  }, [visible]);
+
   return (
     <Tag
       ref={ref}

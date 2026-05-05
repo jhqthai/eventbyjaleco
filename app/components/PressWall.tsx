@@ -11,13 +11,13 @@ export default function PressWall() {
           <Link
             href="/press"
             aria-label="View press features"
-            className="block group"
+            className="block"
           >
             <ul className="flex flex-wrap items-center justify-center gap-x-12 gap-y-8 lg:gap-x-20">
               {PUBLICATIONS.map((p) => (
                 <li
                   key={p.name}
-                  className="font-display text-foreground/55 group-hover:text-foreground/80 transition-colors duration-500"
+                  className="font-display text-foreground/55 hover:text-foreground/90 transition-colors duration-500"
                   style={{
                     fontSize: "clamp(1.25rem, 0.95rem + 0.9vw, 1.625rem)",
                     letterSpacing: "0.02em",

@@ -44,7 +44,7 @@ export default function PressPage() {
   return (
     <>
       <Navbar />
-      <main id="main">
+      <main id="main" className="page-fade-in">
         <header className="pt-32 lg:pt-40 pb-20">
           <div className="container-px container-max">
             <Reveal>

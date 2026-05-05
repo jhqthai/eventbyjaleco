@@ -52,24 +52,24 @@ export default function Navbar({ overImage = false }: NavbarProps) {
   // When sitting over a dark hero image and not scrolled, render text white.
   const inverted = overImage && !scrolled && !open;
 
+  const condensed = scrolled || open;
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-500 ${
-        scrolled || open
+        condensed
           ? "bg-background/92 backdrop-blur-xl border-b border-border"
           : "bg-transparent"
       }`}
     >
       <nav
-        className={`container-px container-max flex items-center justify-between transition-[height] duration-500 ease-out ${
-          scrolled || open ? "h-14" : "h-20"
-        }`}
+        className={`container-px container-max flex items-center justify-between h-20`}
       >
         <Link
           href="/"
           aria-label="Event by Jaleco — Weddings & Events"
-          className={`font-display transition-[font-size,color] duration-500 ${
-            scrolled || open ? "text-lg" : "text-2xl"
+          className={`inline-block font-display text-2xl origin-left transform-gpu transition-[transform,color] duration-500 ease-out ${
+            condensed ? "scale-[0.78]" : "scale-100"
           } ${inverted ? "text-background" : "text-foreground"}`}
           style={{ letterSpacing: "-0.02em", lineHeight: 1.1 }}
         >

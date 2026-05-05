@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Footer from "../components/Footer";
 import JsonLd from "../components/JsonLd";
+import MediaImage from "../components/MediaImage";
 import Navbar from "../components/Navbar";
 import Reveal from "../components/Reveal";
 import {
@@ -92,7 +93,7 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main id="main">
+      <main id="main" className="page-fade-in">
         <section className="pt-32 lg:pt-40 pb-[var(--space-section)]">
           <div className="container-px container-max grid gap-16 lg:gap-y-24 lg:gap-x-[var(--col-gutter)] lg:grid-cols-12 items-end">
             <div className="lg:col-span-6 order-2 lg:order-1">
@@ -194,7 +195,7 @@ export default function AboutPage() {
               {TEAM.map((member, i) => (
                 <Reveal key={member.name} as="figure" className="m-0" delay={i * 60}>
                   <div className="relative aspect-[3/4] w-full overflow-hidden bg-muted">
-                    <Image
+                    <MediaImage
                       src={member.photo}
                       alt={member.alt}
                       fill

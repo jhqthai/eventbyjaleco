@@ -66,7 +66,7 @@ export default function Home() {
   return (
     <>
       <Navbar overImage />
-      <main id="main">
+      <main id="main" className="page-fade-in">
         <Hero />
         <StudioStatement />
         <SelectedWork />

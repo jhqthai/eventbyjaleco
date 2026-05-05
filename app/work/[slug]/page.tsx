@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "../../components/Footer";
 import JsonLd from "../../components/JsonLd";
+import MediaImage from "../../components/MediaImage";
 import Navbar from "../../components/Navbar";
 import Reveal from "../../components/Reveal";
 import {
@@ -83,7 +84,7 @@ export default function WorkDetailPage({
   return (
     <>
       <Navbar overImage />
-      <main id="main">
+      <main id="main" className="page-fade-in">
         <section className="relative h-[80svh] min-h-[520px] w-full overflow-hidden">
           <div className="absolute inset-0 -z-10">
             <Image
@@ -103,24 +104,21 @@ export default function WorkDetailPage({
           <div className="relative z-10 h-full flex flex-col">
             <div className="flex-1" />
             <div className="container-px container-max pb-16 lg:pb-24">
-              <Reveal>
-                <p className="eyebrow text-background/85 mb-5">
-                  {work.category} · {work.year}
-                </p>
-              </Reveal>
-              <Reveal delay={120}>
-                <h1
-                  className="font-display text-background text-balance"
-                  style={{
-                    fontSize: "clamp(2.5rem, 1.8rem + 4vw, 5.5rem)",
-                    lineHeight: 0.98,
-                    letterSpacing: "-0.03em",
-                  }}
-                >
-                  {work.place},{" "}
-                  <em className="display-italic">{work.region}</em>
-                </h1>
-              </Reveal>
+              <p className="eyebrow text-background/85 mb-5 reveal-on-load">
+                {work.category} · {work.year}
+              </p>
+              <h1
+                className="font-display text-background text-balance reveal-on-load"
+                style={{
+                  fontSize: "clamp(2.5rem, 1.8rem + 4vw, 5.5rem)",
+                  lineHeight: 0.98,
+                  letterSpacing: "-0.03em",
+                  animationDelay: "120ms",
+                }}
+              >
+                {work.place},{" "}
+                <em className="display-italic">{work.region}</em>
+              </h1>
             </div>
           </div>
         </section>
@@ -148,7 +146,7 @@ export default function WorkDetailPage({
                 <Reveal key={i} as="figure" className="m-0">
                   {img.full ? (
                     <div className="relative aspect-[16/9] w-full overflow-hidden bg-muted">
-                      <Image
+                      <MediaImage
                         src={img.src}
                         alt={img.alt}
                         fill
@@ -159,7 +157,7 @@ export default function WorkDetailPage({
                   ) : (
                     <div className="container-px container-max">
                       <div className="relative aspect-[4/5] sm:aspect-[16/10] w-full overflow-hidden bg-muted max-w-4xl mx-auto">
-                        <Image
+                        <MediaImage
                           src={img.src}
                           alt={img.alt}
                           fill

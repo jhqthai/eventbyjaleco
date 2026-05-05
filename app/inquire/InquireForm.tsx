@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Reveal from "../components/Reveal";
 
 type FormState = {
   name: string;
@@ -43,22 +44,24 @@ export default function InquireForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-10">
       {status === "success" && (
-        <div
-          role="status"
-          className="border border-border py-4 px-5 flex items-baseline gap-3"
-        >
-          <span aria-hidden className="display-italic text-fluid-lg text-accent">
-            ✓
-          </span>
-          <div>
-            <p className="display-italic text-fluid-lg text-foreground">
-              Thank you, beautifully sent.
-            </p>
-            <p className="text-fluid-sm text-muted-foreground mt-1">
-              We will be in touch within two business days.
-            </p>
+        <Reveal>
+          <div
+            role="status"
+            className="border border-border py-4 px-5 flex items-baseline gap-3"
+          >
+            <span aria-hidden className="display-italic text-fluid-lg text-accent">
+              ✓
+            </span>
+            <div>
+              <p className="display-italic text-fluid-lg text-foreground">
+                Thank you, beautifully sent.
+              </p>
+              <p className="text-fluid-sm text-muted-foreground mt-1">
+                We will be in touch within two business days.
+              </p>
+            </div>
           </div>
-        </div>
+        </Reveal>
       )}
 
       <div className="grid sm:grid-cols-2 gap-x-8 gap-y-10">
@@ -132,8 +135,21 @@ export default function InquireForm() {
           disabled={status === "submitting"}
           className="inline-flex items-center gap-3 text-[12px] uppercase tracking-label text-foreground link-underline disabled:opacity-50 disabled:cursor-not-allowed self-start sm:self-center py-2"
         >
-          {status === "submitting" ? "Sending…" : "Submit enquiry"}
-          <span aria-hidden>→</span>
+          {status === "submitting" ? (
+            <>
+              <span>Sending</span>
+              <span aria-hidden className="dot-pulse">
+                <span />
+                <span />
+                <span />
+              </span>
+            </>
+          ) : (
+            <>
+              Submit enquiry
+              <span aria-hidden>→</span>
+            </>
+          )}
         </button>
       </div>
     </form>

@@ -1,14 +1,19 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { flushSync } from "react-dom";
+import MediaImage from "../components/MediaImage";
 import Reveal from "../components/Reveal";
 import { WORKS, type Work } from "../lib/works";
 
 type Filter = "All" | "2025" | "2024" | "Destination" | "Intimate" | "Estate";
 
 const FILTERS: Filter[] = ["All", "2025", "2024", "Destination", "Intimate", "Estate"];
+
+type ViewTransitionDocument = Document & {
+  startViewTransition?: (cb: () => void) => unknown;
+};
 
 function applyFilter(works: Work[], filter: Filter) {
   if (filter === "All") return works;
@@ -22,6 +27,20 @@ export default function WorkGrid() {
   const [filter, setFilter] = useState<Filter>("All");
   const works = useMemo(() => applyFilter(WORKS, filter), [filter]);
 
+  const handleFilter = (next: Filter) => {
+    if (next === filter) return;
+    if (typeof document !== "undefined") {
+      const doc = document as ViewTransitionDocument;
+      if (typeof doc.startViewTransition === "function") {
+        doc.startViewTransition(() => {
+          flushSync(() => setFilter(next));
+        });
+        return;
+      }
+    }
+    setFilter(next);
+  };
+
   return (
     <>
       <div className="container-px container-max mt-16 lg:mt-20 mb-12 lg:mb-16">
@@ -32,7 +51,7 @@ export default function WorkGrid() {
               <li key={f}>
                 <button
                   type="button"
-                  onClick={() => setFilter(f)}
+                  onClick={() => handleFilter(f)}
                   className={`relative text-[12px] uppercase tracking-label py-2 transition-colors ${
                     active
                       ? "text-accent"
@@ -60,7 +79,10 @@ export default function WorkGrid() {
             No celebrations match this view yet.
           </p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-14 gap-x-6 lg:gap-x-8">
+          <div
+            key={filter}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-14 gap-x-6 lg:gap-x-8"
+          >
             {works.map((work, i) => (
               <Reveal
                 key={work.slug}
@@ -68,7 +90,11 @@ export default function WorkGrid() {
                 className="m-0"
                 delay={(i % 6) * 60}
               >
-                <Link href={`/work/${work.slug}`} className="block group">
+                <Link
+                  href={`/work/${work.slug}`}
+                  className="block group"
+                  style={{ viewTransitionName: `work-${work.slug}` }}
+                >
                   <div
                     className={`relative overflow-hidden bg-muted ${
                       work.aspect === "portrait"
@@ -76,16 +102,16 @@ export default function WorkGrid() {
                         : "aspect-[16/10]"
                     }`}
                   >
-                    <Image
+                    <MediaImage
                       src={work.thumb}
                       alt={work.thumbAlt}
                       fill
                       sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.02]"
+                      className="object-cover transform-gpu transition-[opacity,transform] duration-[600ms] ease-out group-hover:scale-[1.04]"
                     />
                   </div>
                   <figcaption className="mt-4 flex items-baseline justify-between gap-4">
-                    <span className="display-italic text-foreground text-fluid-lg">
+                    <span className="display-italic text-foreground text-fluid-lg transition-colors duration-500 group-hover:text-accent">
                       {work.place}
                     </span>
                     <span className="text-[11px] uppercase tracking-label text-muted-foreground">
