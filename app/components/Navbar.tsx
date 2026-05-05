@@ -21,8 +21,19 @@ export default function Navbar({ overImage = false }: NavbarProps) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
+    let ticking = false;
+    const update = () => {
+      const y = window.scrollY;
+      setScrolled((prev) => (prev ? y > 48 : y > 96));
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -43,19 +54,23 @@ export default function Navbar({ overImage = false }: NavbarProps) {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-500 ${
+      className={`fixed top-0 inset-x-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-500 ${
         scrolled || open
           ? "bg-background/92 backdrop-blur-xl border-b border-border"
           : "bg-transparent"
       }`}
     >
-      <nav className="container-px container-max flex items-center justify-between h-20">
+      <nav
+        className={`container-px container-max flex items-center justify-between transition-[height] duration-500 ease-out ${
+          scrolled || open ? "h-14" : "h-20"
+        }`}
+      >
         <Link
           href="/"
           aria-label="Event by Jaleco — Weddings & Events"
-          className={`font-display text-2xl transition-colors duration-500 ${
-            inverted ? "text-background" : "text-foreground"
-          }`}
+          className={`font-display transition-[font-size,color] duration-500 ${
+            scrolled || open ? "text-lg" : "text-2xl"
+          } ${inverted ? "text-background" : "text-foreground"}`}
           style={{ letterSpacing: "-0.02em", lineHeight: 1.1 }}
         >
           Event by Jaleco

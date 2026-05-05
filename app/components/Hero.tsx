@@ -28,7 +28,7 @@ export default function Hero() {
       <div className="relative z-10 h-full flex flex-col">
         <div className="flex-1" />
 
-        <div className="container-px container-max pb-20 lg:pb-28">
+        <div className="container-px container-max pb-32 sm:pb-24 lg:pb-28">
           <Reveal>
             <p className="eyebrow text-background/85 mb-6">
               Boutique Wedding Atelier · Est. 2014
